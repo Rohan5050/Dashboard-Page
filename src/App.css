@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar  {
+    background-color: white;
+}
+
+#aln-bar {
+    position: relative;
+    left: -380px;
+    width: 420px;
+}
+
+#style-bar {
+  text-align: center;
+  background: url(SearchIcon.png);
+  background-repeat: no-repeat;
+  width: 500px;
+  padding: 10px 40px 10px 10px; 
+  border: 1px solid #ccc;
+  background-size: 50px 50px;
+  border-radius: 8px;
+
+}
+
+#d-flex {
+    position: relative;
+    top: -192px;
+}
+
+body {
+    background-color:aliceblue;
+    max-height: 1200px;
+}
+
+.hdalign {
+    position: relative;
+    top: -132px;
+    left: -2px;
+    padding: 22px;
+}
+
+
+.hd2align {
+    position: relative;
+    top: -142px;
+    padding: 22px;
+}
+
+.grid-container {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: auto auto auto;
+    padding: 22px;
+}
+
+.grid-item img {
+  width: 280px; /* Make the image fit the grid item */
+  height: 180px; /* Maintain aspect ratio */
+  position: relative;
+  top: -22px;
+  border: 2px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+  object-fit: cover; /* Cover the grid item without stretching the image */
+}
+
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgb(230, 228, 228);
+  border-radius: 20px;
+  padding: 75px;
+  font-size: 18px;
+  text-align: center;
+  width: 425px;
+  height: 250px;
+}
+
+.hdgrid {
+  position: relative;
+  top: -22px;
+  left: -80px;
+}
+
+.hdgrid-2 {
+  position: relative;
+  top: -490px;
+  right: -20px;
+
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(230,228,228);
+  border-radius: 20px;
+  padding: 35px;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.btn-aln-1 {
+    position: relative;
+    top: -20px;
+    right: -52rem;
+    width: 210px;
+    border-radius: 8px;
+    padding: 20px 20px;
+    font-size: 12px;
+    font-weight: 550;
+}
+
+#btn-aln-2 {
+    background-color: white;
+    position: relative;
+    right: -65rem;
+    top: -100px;
+    padding: 5px;
+    margin: 12px;
+    width: 45px;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 8px;
+}
+
+
+.btn-aln-3 {
+    border: 2px solid darkblue;
+    color: darkblue;
+    background-color: white;
+    position: relative;
+    top: -100px;
+    right: -65rem;
+    padding: 5px;
+    margin: 12px;
+    width: 150px;
+    border-radius: 8px;
+
+}
+
+.hd3-aln {
+    position: relative;
+    top: -188px;
+    margin: 0 28px;
+}
+
+#d-flex-2 {
+    position: relative;
+    top: -198px;
+}
+
+#box1-txt {
+    display: flex;
+    align-content:flex-start;
+    font-size: 18px;
+    padding: 22px;
+}
+
+#stylebtn {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgb(160, 158, 158);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 10px;
+}
+
+
+
+
+
+.App {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: ease-out;
+    border-radius: 8px;
+    border: 1px solid rgb(143, 142, 142);
+  }
+  
+  .half-window {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .half-window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #001D64; 
+    height: 60px;
+    color: #ffffff;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Adjust the space between buttons as needed */
+    align-items: center; /* Center align buttons horizontally */
+  }
+  
+  .vertical-button {
+    padding: 10px 20px; /* Adjust button size */
+    font-size: 16px; /* Adjust font size */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  .vertical-button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+  }
+  
+
+  .txt5 {
+    font-size: 20px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .half-window-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .widget-option {
+    margin: 10px 0;
+  }
+  
+  .half-window-footer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    border-top: 1px solid #dddddd;
+  }
+
+  
+  
+  .cancel-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .confirm-button {
+    background-color: #001D64;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
