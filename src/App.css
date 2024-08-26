@@ -140,6 +140,12 @@ body {
 
 }
 
+.btn-aln-4 {
+  position: relative;
+  top: -28px;
+
+}
+
 .hd3-aln {
     position: relative;
     top: -188px;
@@ -152,10 +158,10 @@ body {
 }
 
 #box1-txt {
-    display: flex;
-    align-content:flex-start;
+    text-align: center;
     font-size: 18px;
-    padding: 22px;
+    padding: 55px;
+
 }
 
 #stylebtn {
@@ -163,12 +169,8 @@ body {
     border: 1px solid rgb(160, 158, 158);
     padding: 10px 20px;
     border-radius: 8px;
-    font-size: 10px;
+    font-size: 14px;
 }
-
-
-
-
 
 .App {
     text-align: center;
@@ -201,7 +203,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     background-color: #001D64; 
     height: 60px;
     color: #ffffff;
@@ -243,7 +245,7 @@ body {
   }
   
   .half-window-content {
-    padding: 20px;
+    padding: 10px;
     flex-grow: 1;
   }
   
@@ -254,11 +256,16 @@ body {
   .half-window-footer {
     display: flex;
     justify-content: flex-start;
-    padding: 20px;
+    padding: 10px;
     border-top: 1px solid #dddddd;
   }
 
-  
+
+  .widget {
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+  }  
   
   .cancel-button {
     background-color: #f0f0f0;

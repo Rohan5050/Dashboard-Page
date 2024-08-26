@@ -1,13 +1,13 @@
-export const ADD_WIDGET = 'ADD_WIDGET';
-export const REMOVE_WIDGET = 'REMOVE_WIDGET';
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
-export const addWidget = (section, widget) => ({
-  type: ADD_WIDGET,
-  payload: { section, widget }
+export const addImage = (image, position) => ({
+  type: ADD_IMAGE,
+  payload: { image, position },
 });
 
-export const removeWidget = (section, widgetId) => ({
-  type: REMOVE_WIDGET,
-  payload: { section, widgetId }
+export const removeImage = (position) => ({
+  type: REMOVE_IMAGE,
+  payload: { position },
 });
 

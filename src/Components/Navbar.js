@@ -11,13 +11,13 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
            <li className="nav-item">
-             <a className="nav-link active" aria-current="page">Home</a>
+             <a href='#' className="nav-link active" aria-current="page">Home</a>
            </li>
            <li>
              <span className='nav-link active'>&gt;</span>
            </li>
            <li className="nav-item">
-              <a className="nav-link">Dashboard</a>
+              <a href='#' className="nav-link">Dashboard</a>
             </li>
         </ul>
          <form className='aln-bar-2' id='aln-bar'>

@@ -1,66 +1,67 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, removeItem, resetGrid } from './gridSlice';
 import { FiRefreshCw } from "react-icons/fi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoClockFill } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
-import ButtonGroup from './ButtonGroup';
 
 // ToggleButton Component
 const ToggleButton = ({ isOpen, onToggle }) => {
   return (
-    <div onClick={onToggle}>
+    <button id='stylebtn' onClick={onToggle}>
       {isOpen ? 'Close Window' : '+ Add Widget'}
-    </div>
+    </button>
   );
 };
 
 const Content = () => {
   const [isHalfWindowOpen, setIsHalfWindowOpen] = useState(false);
-  const [gridItems, setGridItems] = useState(Array(9).fill(null)); // Array to hold the grid content
-  const [selectedWidget, setSelectedWidget] = useState(null); // Tracks selected widget
-  const [uploadedImages, setUploadedImages] = useState([]); // Track uploaded images
-  const [selectedPosition, setSelectedPosition] = useState(0); // Position to place widget or image
+  const [selectedWidget, setSelectedWidget] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState(0);
+
+  const dispatch = useDispatch();
+  const gridItems = useSelector((state) => state.grid.gridItems);
 
   const toggleHalfWindow = () => {
-    setIsHalfWindowOpen((prevState) => !prevState);
+    setIsHalfWindowOpen(!isHalfWindowOpen);
   };
 
   const handleAddWidget = (widgetType) => {
-    setSelectedWidget({ type: 'widget' });
+    setSelectedWidget(widgetType);
   };
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setUploadedImages([...uploadedImages, { src: imageUrl, alt: file.name }]);
-      setSelectedWidget({ type: 'image', src: imageUrl, alt: file.name });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result;
+        setSelectedWidget({ type: 'image', src: base64String, alt: file.name });
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const handleConfirmAdd = () => {
-    const updatedGridItems = [...gridItems];
-    if (updatedGridItems[selectedPosition] === null) {
-      updatedGridItems[selectedPosition] = selectedWidget;
-      setGridItems(updatedGridItems);
+    if (selectedWidget) {
+      dispatch(addItem({ position: selectedPosition, item: selectedWidget }));
     }
-    toggleHalfWindow(); // Close the half window after adding
+    toggleHalfWindow();
   };
 
+  const handleRemoveItem = (index) => {
+    dispatch(removeItem(index));
+  };
 
-  const randomHeadings = [
-    "Cloud Accounts Overview",
-    "Cloud Risk Assessment",
-    "Top 5 Namespace Specific Alerts",
-    "Top 5 Namespace Specific Alerts",
-    "Workload Alerts",
-    "Upcoming Events"
-  ];
+  const handleResetGrid = () => {
+    dispatch(resetGrid()); // Dispatch the reset action
+  };
 
   return (
     <>
       <div className='btn-aln-1'>
-        <button><ToggleButton isOpen={isHalfWindowOpen} onToggle={toggleHalfWindow} /> </button>
+        <ToggleButton isOpen={isHalfWindowOpen} onToggle={toggleHalfWindow} />
       </div>
       <button id="btn-aln-2">
         <FiRefreshCw />
@@ -80,9 +81,13 @@ const Content = () => {
       <div id='d-flex' className='grid-container'>
         {gridItems.slice(0, 3).map((item, index) => (
           <div key={index} className="grid-item">
-             <h6 className='hdgrid'>{randomHeadings[index]}</h6>
-            {item?.type === 'widget' && <div className="widget">Widget Content</div>}
-            {item?.type === 'image' && <img src={item.src} alt={item.alt} />}
+            {item?.type === 'widget' && <div className="widget">xyz</div>}
+            {item?.type === 'image' && (
+              <div>
+                <img src={item.src} alt={item.alt} />
+                <button className='btn-aln-4' onClick={() => handleRemoveItem(index)}>Remove</button>
+              </div>
+            )}
             {!item && <div id='box1-txt'><b>Empty Slot</b></div>}
           </div>
         ))}
@@ -93,14 +98,17 @@ const Content = () => {
       <div id='d-flex-2' className='grid-container'>
         {gridItems.slice(3).map((item, index) => (
           <div key={index} className="grid-item">
-           <h6 className='hdgrid'>{randomHeadings[index + 3]}</h6>
-            {item?.type === 'widget' && <div className="widget">Widget Content</div>}
-            {item?.type === 'image' && <img src={item.src} alt={item.alt} />}
+            {item?.type === 'widget' && <div className="widget"></div>}
+            {item?.type === 'image' && (
+              <div>
+                <img src={item.src} alt={item.alt} />
+                <button className='btn-aln-4' onClick={() => handleRemoveItem(index + 3)}>Remove</button>
+              </div>
+            )}
             {!item && <div id='box1-txt'><b>Empty Slot</b></div>}
           </div>
         ))}
       </div>
-
 
       {/* Half-window that appears when ToggleButton is clicked */}
       {isHalfWindowOpen && (
@@ -111,14 +119,13 @@ const Content = () => {
           </div>
           <div className="half-window-content">
             <p>Personalize your dashboard by adding the following widgets or images</p>
-            <ButtonGroup/>
             <ul>
               <li>
-                <button onClick={() => handleAddWidget('widget')}>Add Widget</button>
+                <button onClick={() => handleAddWidget('widget')}>Add Content</button>
               </li>
               <li>
                 <button>
-                  <label htmlFor="image-upload">Add Image</label>
+                  <label htmlFor="image-upload">Add Widget</label>
                   <input 
                     type="file" 
                     id="image-upload" 
@@ -127,6 +134,7 @@ const Content = () => {
                   />
                 </button>
               </li>
+              <li><button onClick={handleResetGrid}>Reset Grid</button> {/* Add reset button */}</li>
             </ul>
 
             <div className="position-select">

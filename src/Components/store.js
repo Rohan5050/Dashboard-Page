@@ -1,10 +1,11 @@
+// src/store.js
 import { configureStore } from '@reduxjs/toolkit';
-import widgetsReducer from './widgetsReducer';
+import gridReducer from './gridSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    widgets: widgetsReducer
-  }
+    grid: gridReducer,
+  },
 });
 
-export default store;
+
